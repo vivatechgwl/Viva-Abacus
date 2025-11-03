@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Secure Access</title>
+
+  <style>
+    /* Background setup */
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+    background: url('img/login.avif') no-repeat center center/cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      backdrop-filter: blur(6px);
+      font-family: "Poppins", sans-serif;
+    }
+
+    /* Semi-transparent overlay box */
+    .login-box {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      color: white;
+      backdrop-filter: blur(10px);
+      width: 350px;
+      transition: transform 0.3s ease;
+    }
+
+    .login-box:hover {
+      transform: scale(1.02);
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      font-weight: 500;
+    }
+
+    input[type="password"] {
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      width: 100%;
+      outline: none;
+      margin-bottom: 20px;
+      text-align: center;
+      font-size: 16px;
+    }
+
+    button {
+      background: #007bff;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 20px;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+
+    .error {
+      color: rgb(202, 41, 41);
+      font-size: 17px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-box">
+    <h1>🔒 Secure Access</h1>
+    <input type="password" id="accessCode" placeholder="Enter Access Code">
+    <br>
+    <button onclick="checkCode()">Enter</button>
+    <p id="errorMessage" class="error"></p>
+  </div>
+
+  <script>
+    function checkCode() {
+      const code = document.getElementById("accessCode").value;
+      const correctCode = "0501"; // 🔑 Set your secret code here
+      const errorMsg = document.getElementById("errorMessage");
+
+      if (code === correctCode) {
+        window.location.href = "https://forms.gle/vApFeYN6qUccBEQJ7"; // ✅ Redirect to your main page
+      } else {
+        errorMsg.textContent = "❌ Wrong code! Access denied.";
+      }
+    }
+
+    // Optional: allow Enter key to submit
+    document.getElementById("accessCode").addEventListener("keypress", function(e) {
+      if (e.key === "Enter") checkCode();
+    });
+  </script>
+
+</body>
+</html>
